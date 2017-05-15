@@ -11,29 +11,41 @@ import edu.iis.powp.command.IPlotterCommand;
 /**
  * Complex command class
  */
-public class Command implements ICompoundCommand {
+public class Command extends CommandDatabaseComponent implements ICompoundCommand {
 
 	private List<IPlotterCommand> plotterCommands;
 	
-	public Command(List<IPlotterCommand> plotterCommands)
+	/**
+	 * Class constructor that sets commands list.
+	 * @param name	name for command
+	 * @param plotterCommands	list of commands
+	 */
+	public Command(String name, List<IPlotterCommand> plotterCommands)
 	{
+		this.name = name;
 		this.plotterCommands = plotterCommands;
 	}
 	
-	public Command()
+	/**
+	 * @param name	name for command
+	 */
+	public Command(String name)
 	{
+		this.name = name;
 		this.plotterCommands = new ArrayList<IPlotterCommand>();
 	}
 	
 	/**
 	 * Adds command to list of commands to execute
 	 * @param command	command to add
+	 * @throws NullPointerException	
 	 */
-	public void add(IPlotterCommand command)
+
+	public void add(IPlotterCommand command) throws NullPointerException
 	{
 		this.plotterCommands.add(command);
 	}
-	
+		
 	@Override
 	public void execute(IPlotter plotter)
 	{
