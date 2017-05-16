@@ -57,5 +57,14 @@ public class Command extends CommandDatabaseComponent implements ICompoundComman
 	{
 		return plotterCommands.iterator();
 	}
+	
+	/**
+	 * Returns list containing commands used in this command.
+	 * @return	list with commands
+	 */
+	public List<IPlotterCommand> getCommandsList()
+	{
+		return plotterCommands;
+	}
 
 }

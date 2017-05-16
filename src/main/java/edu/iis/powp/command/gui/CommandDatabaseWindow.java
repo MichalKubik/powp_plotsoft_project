@@ -17,6 +17,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import edu.iis.powp.command.database.CommandDatabase;
 import edu.iis.powp.command.database.CommandGroup;
+import edu.iis.powp.command.gui.events.TreeNodeSelectionListener;
 import edu.iis.powp.window.WindowComponent;
 
 public class CommandDatabaseWindow extends JFrame implements WindowComponent {
@@ -48,6 +49,7 @@ public class CommandDatabaseWindow extends JFrame implements WindowComponent {
 		tree = new JTree();	
 		updateTree();
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		tree.addTreeSelectionListener(new TreeNodeSelectionListener());
 		JScrollPane treeView = new JScrollPane(tree);
 		treeView.setMinimumSize(new Dimension(400,300));
 		content.add(treeView);
