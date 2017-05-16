@@ -1,11 +1,14 @@
 package edu.iis.powp.command.database;
 
+import edu.iis.powp.observer.Publisher;
+
 /**
  * Main class for database
  */
 public class CommandDatabase
 {
 	private CommandGroup mainGroup;
+	private static Publisher changePublisher = new Publisher(); 
 
 	/**
 	 * Main class constructor
@@ -23,6 +26,7 @@ public class CommandDatabase
 	public void addComponent(CommandDatabaseComponent component) throws NullPointerException
 	{
 		mainGroup.addComponent(component);
+		changePublisher.notifyObservers();
 	}
 
 	/**
@@ -32,6 +36,17 @@ public class CommandDatabase
 	public void removeComponent(CommandDatabaseComponent component)
 	{
 		mainGroup.removeComponent(component);
+		changePublisher.notifyObservers();
+	}
+	
+	
+	/**
+	 * Returns size of main list.
+	 * @return	size of main list
+	 */
+	public int size()
+	{
+		return mainGroup.size();
 	}
 	
 	/**
@@ -43,6 +58,13 @@ public class CommandDatabase
 	public CommandDatabaseComponent getComponent(int index) throws IndexOutOfBoundsException
 	{
 		return mainGroup.getComponent(index);
+	}
+	
+	/** Returns change publisher.
+	 * @return	change publisher
+	 */
+	public static Publisher getChangePublisher() {
+		return changePublisher;
 	}
 
 }

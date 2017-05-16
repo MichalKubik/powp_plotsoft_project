@@ -35,6 +35,7 @@ public class CommandGroup extends CommandDatabaseComponent
 	public void addComponent(CommandDatabaseComponent component) throws NullPointerException
 	{
 		this.components.add(component);
+		CommandDatabase.getChangePublisher().notifyObservers();
 	}
 
 	/**
@@ -44,6 +45,16 @@ public class CommandGroup extends CommandDatabaseComponent
 	public void removeComponent(CommandDatabaseComponent component)
 	{
 		this.components.remove(component);
+		CommandDatabase.getChangePublisher().notifyObservers();
+	}
+	
+	/**
+	 * Returns size of group.
+	 * @return	size of group
+	 */
+	public int size()
+	{
+		return this.components.size();
 	}
 	
 	/**

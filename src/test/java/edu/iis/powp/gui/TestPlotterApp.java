@@ -10,8 +10,12 @@ import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.adapter.LineAdapterPlotterDriver;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.appext.FeaturesManager;
+import edu.iis.powp.command.database.CommandDatabase;
+import edu.iis.powp.command.gui.CommandDatabaseWindow;
+import edu.iis.powp.command.gui.CommandDatabaseWindowDatabaseChangeObserver;
 import edu.iis.powp.command.gui.CommandManagerWindow;
 import edu.iis.powp.command.gui.CommandManagerWindowCommandChangeObserver;
+import edu.iis.powp.events.SelectGenerateDatabase;
 import edu.iis.powp.events.SelectLoadSecretCommandOptionListener;
 import edu.iis.powp.events.SelectRunCurrentCommandOptionListener;
 import edu.iis.powp.events.SelectTestFigure2OptionListener;
@@ -98,6 +102,22 @@ public class TestPlotterApp {
 				(ActionEvent e) -> logger.setLevel(Level.SEVERE));
 		application.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> logger.setLevel(Level.OFF));
 	}
+	
+	/**
+	 * Setup database window.
+	 * 
+	 * @param application
+	 *            Application context.
+	 */
+	private static void setupCommandDatabase(Application application){
+		CommandDatabaseWindow commandDatabaseWindow = new CommandDatabaseWindow(FeaturesManager.getCommandDatabase());
+		application.addWindowComponent("Command Database", commandDatabaseWindow);
+		
+		application.addTest("Generate database", new SelectGenerateDatabase());
+		
+		CommandDatabaseWindowDatabaseChangeObserver windowObserver = new CommandDatabaseWindowDatabaseChangeObserver(commandDatabaseWindow);
+		CommandDatabase.getChangePublisher().addSubscriber(windowObserver);
+	}
 
 	/**
 	 * Launch the application.
@@ -113,6 +133,7 @@ public class TestPlotterApp {
 				setupCommandTests(app);
 				setupLogger(app);
 				setupWindows(app);
+				setupCommandDatabase(app);
 
 				app.setVisibility(true);
 			}

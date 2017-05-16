@@ -2,6 +2,8 @@ package edu.iis.powp.appext;
 
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.DriverManager;
+import edu.iis.powp.command.database.Command;
+import edu.iis.powp.command.database.CommandDatabase;
 import edu.iis.powp.command.manager.LoggerCommandChangeObserver;
 import edu.iis.powp.command.manager.PlotterCommandManager;
 import edu.iis.powp.events.predefine.SelectClearPanelOptionListener;
@@ -14,6 +16,7 @@ public class FeaturesManager {
 	private static PlotterCommandManager commandManager;
 	private static DriverManager driverManager;
 	private static DrawPanelController drawerController;
+	private static CommandDatabase commandDatabase;
 
 	/**
 	 * Startup configuration.
@@ -26,6 +29,8 @@ public class FeaturesManager {
 			setupCommandManager();
 
 			setupDrawerPlugin(application);
+			
+			setupCommandDatabase();
 		}
 	}
 
@@ -50,6 +55,23 @@ public class FeaturesManager {
 		application.addComponentMenuElement(DrawPanelController.class, "Clear Panel", selectClearPanelOptionListener);
 
 		drawerController.initialize(application.getFreePanel());
+	}
+	
+	/**
+	 * Setup database for commands.
+	 */
+	private static void setupCommandDatabase()
+	{
+		commandDatabase = new CommandDatabase();
+	}
+	
+	/**
+	 * Get database for commands.
+	 * @return	commandDatabase
+	 */
+	public static CommandDatabase getCommandDatabase()
+	{
+		return commandDatabase;
 	}
 
 	/**
