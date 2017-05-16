@@ -72,7 +72,7 @@ public class CommandDatabaseWindow extends JFrame implements WindowComponent {
 	public void updateTree()
 	{
 		tree.setModel(null);
-		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Command database");
+		DefaultMutableTreeNode top = new CommandDatabaseTreeNode(database.getMainGroup());
 		tree.setModel(new DefaultTreeModel(top));
 		
 		for(int i=0;i<database.size();i++)
@@ -80,6 +80,8 @@ public class CommandDatabaseWindow extends JFrame implements WindowComponent {
 			CommandDatabaseTreeNode node = new CommandDatabaseTreeNode(database.getComponent(i));
 			addNode(top, node);			
 		}
+		
+		tree.expandRow(0);
 	}
 	
 	private void addNode(DefaultMutableTreeNode parent, CommandDatabaseTreeNode child)

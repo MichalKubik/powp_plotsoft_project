@@ -15,13 +15,16 @@ public class TreeNodeSelectionListener implements TreeSelectionListener
 	@Override
 	public void valueChanged(TreeSelectionEvent e) 
 	{
-		CommandDatabaseTreeNode node = (CommandDatabaseTreeNode) ((JTree) (e.getSource())).getLastSelectedPathComponent();
-	    
-		if(node.getDatabaseComponent() instanceof Command)
+		if(((JTree) (e.getSource())).getLastSelectedPathComponent()!=null)
 		{
-			PlotterCommandManager manager = FeaturesManager.getPlotterCommandManager();
-		    manager.setCurrentCommand(((Command) node.getDatabaseComponent()).getCommandsList(), node.getDatabaseComponent().getName());
-		}		
+			CommandDatabaseTreeNode node = (CommandDatabaseTreeNode) ((JTree) (e.getSource())).getLastSelectedPathComponent();
+		    
+			if(node.getDatabaseComponent() instanceof Command)
+			{
+				PlotterCommandManager manager = FeaturesManager.getPlotterCommandManager();
+			    manager.setCurrentCommand(((Command) node.getDatabaseComponent()).getCommandsList(), node.getDatabaseComponent().getName());
+			}	
+		}
 	}
 
 }

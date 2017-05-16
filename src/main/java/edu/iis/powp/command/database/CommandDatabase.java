@@ -15,7 +15,7 @@ public class CommandDatabase
 	 */
 	public CommandDatabase()
 	{
-		this.mainGroup = new CommandGroup();
+		this.mainGroup = new CommandGroup("Command Database");
 	}
 	
 	/**
@@ -65,6 +65,13 @@ public class CommandDatabase
 	 */
 	public static Publisher getChangePublisher() {
 		return changePublisher;
+	}
+	
+	/** Returns main group.
+	 * @return	main group
+	 */
+	public CommandGroup getMainGroup(){
+		return mainGroup;
 	}
 
 }
