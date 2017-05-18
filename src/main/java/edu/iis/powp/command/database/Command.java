@@ -1,8 +1,12 @@
 package edu.iis.powp.command.database;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import com.google.gson.Gson;
 
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.command.ICompoundCommand;
@@ -65,6 +69,16 @@ public class Command extends CommandDatabaseComponent implements ICompoundComman
 	public List<IPlotterCommand> getCommandsList()
 	{
 		return plotterCommands;
+	}
+	
+
+	public void saveToFile(String path){
+		//TODO: zapis do pliku
+	}
+	
+	public static Command readFromFile(String path) throws IOException {
+		FileReader reader = new FileReader(path);
+		return new Gson().fromJson(reader, Command.class);
 	}
 
 }

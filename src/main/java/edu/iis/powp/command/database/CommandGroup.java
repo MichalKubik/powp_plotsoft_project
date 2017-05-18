@@ -67,5 +67,5 @@ public class CommandGroup extends CommandDatabaseComponent
 	{
 		return this.components.get(index);
 	}
-
+	
 }
