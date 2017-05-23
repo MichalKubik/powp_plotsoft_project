@@ -17,6 +17,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import edu.iis.powp.command.database.CommandDatabase;
 import edu.iis.powp.command.database.CommandGroup;
+import edu.iis.powp.command.gui.events.SearchTextFieldChangeListener;
 import edu.iis.powp.command.gui.events.TreeNodeSelectionListener;
 import edu.iis.powp.window.WindowComponent;
 
@@ -25,6 +26,7 @@ public class CommandDatabaseWindow extends JFrame implements WindowComponent {
 	private CommandDatabase database;
 	
 	private JTree tree;
+	private JTextField searchTextField;
 	/**
 	 * 
 	 */
@@ -42,8 +44,9 @@ public class CommandDatabaseWindow extends JFrame implements WindowComponent {
 		JPanel searchPanel = new JPanel();
 		//BoxLayout searchLayout = new BoxLayout(searchPanel, BoxLayout.LINE_AXIS);
 		searchPanel.add(new JLabel("Search: "));
-		JTextField searchTextView = new JTextField("", 20);
-		searchPanel.add(searchTextView);
+		searchTextField = new JTextField("", 20);
+		searchTextField.getDocument().addDocumentListener(new SearchTextFieldChangeListener(this));
+		searchPanel.add(searchTextField);
 		content.add(searchPanel);
 		
 		tree = new JTree();	
@@ -105,6 +108,18 @@ public class CommandDatabaseWindow extends JFrame implements WindowComponent {
 		} else {
 			this.setVisible(true);
 		}		
+	}
+	
+	public JTree getTree(){
+		return this.tree;
+	}
+	
+	public JTextField getSearchTextField(){
+		return this.searchTextField;
+	}
+	
+	public CommandDatabase getDatabase(){
+		return this.database;
 	}
 
 }

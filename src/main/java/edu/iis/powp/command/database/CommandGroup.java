@@ -1,5 +1,6 @@
 package edu.iis.powp.command.database;
 
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +67,32 @@ public class CommandGroup extends CommandDatabaseComponent
 	public CommandDatabaseComponent getComponent(int index) throws IndexOutOfBoundsException
 	{
 		return this.components.get(index);
+	}
+	
+	/**
+	 * Returns list of commands matching the name.
+	 * @param query	name being searched
+	 * @return	ArrayList of commands
+	 */
+	public ArrayList<Command> filterCommandsByName(String query)
+	{
+		ArrayList<Command> returnList = new ArrayList<Command>();
+		
+		int n = components.size();
+		for(int i=0; i<n; i++)
+		{
+			CommandDatabaseComponent c = components.get(i);
+			if(c instanceof CommandGroup)
+			{
+				returnList.addAll(((CommandGroup) c).filterCommandsByName(query));
+			} else if(c instanceof Command)
+			{
+				if(c.getName().toLowerCase().contains(query.toLowerCase()))
+					returnList.add((Command)c);
+			}
+		}		
+		
+		return returnList;
 	}
 	
 }
