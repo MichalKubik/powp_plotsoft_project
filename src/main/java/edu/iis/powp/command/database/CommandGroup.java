@@ -87,7 +87,7 @@ public class CommandGroup extends CommandDatabaseComponent
 				returnList.addAll(((CommandGroup) c).filterCommandsByName(query));
 			} else if(c instanceof Command)
 			{
-				if(c.getName().contains(query))
+				if(c.getName().toLowerCase().contains(query.toLowerCase()))
 					returnList.add((Command)c);
 			}
 		}		
