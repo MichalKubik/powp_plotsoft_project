@@ -1,7 +1,6 @@
 package edu.iis.powp.command.database;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -71,14 +70,19 @@ public class Command extends CommandDatabaseComponent implements ICompoundComman
 		return plotterCommands;
 	}
 	
-
-	public void saveToFile(String path){
-		//TODO: zapis do pliku
+	public void saveToFile() throws IOException {
+		FileWriter writer = new FileWriter("data/" + name + ".json");
+		CommandDataList cdl = new CommandDataList();
+		plotterCommands.forEach(cmd -> cdl.add(new CommandData(cmd)));
+		new Gson().toJson(writer, CommandDataList.class);
 	}
 	
 	public static Command readFromFile(String path) throws IOException {
-		FileReader reader = new FileReader(path);
-		return new Gson().fromJson(reader, Command.class);
+		File file = new File(path);
+		FileReader reader = new FileReader(file);
+		String name = file.getName();
+		name = name.substring(0, name.length() - 5);
+		CommandDataList cdl = new Gson().fromJson(reader, CommandDataList.class);
+		return new Command(name, cdl.getCommandList());
 	}
-
 }
