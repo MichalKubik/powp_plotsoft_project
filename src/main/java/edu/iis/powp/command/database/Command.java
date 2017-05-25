@@ -38,6 +38,26 @@ public class Command extends CommandDatabaseComponent implements ICompoundComman
 		this.plotterCommands = new ArrayList<IPlotterCommand>();
 	}
 	
+
+	/**
+	 * Returns new Command object based on another ICompoundCommand object.
+	 * @param compoundCommand	ICompoundCommand object used to build new Command
+	 * @return new Command object
+	 */
+	public static Command getCommandFromICompoundCommand(ICompoundCommand compoundCommand)
+	{
+		final Command C = new Command(compoundCommand.toString());
+
+		Iterator<IPlotterCommand> iterator = compoundCommand.iterator();
+		while(iterator.hasNext())
+		{
+			Object plotterCommand = iterator.next();
+			C.add((IPlotterCommand)plotterCommand);		
+		}
+		
+		return C;
+	}
+	
 	/**
 	 * Adds command to list of commands to execute
 	 * @param command	command to add

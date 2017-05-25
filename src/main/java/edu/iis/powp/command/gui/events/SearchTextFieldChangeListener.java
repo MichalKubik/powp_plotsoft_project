@@ -2,7 +2,6 @@ package edu.iis.powp.command.gui.events;
 
 import java.util.ArrayList;
 
-import javax.swing.JTree;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.tree.DefaultMutableTreeNode;

@@ -17,6 +17,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import edu.iis.powp.command.database.CommandDatabase;
 import edu.iis.powp.command.database.CommandGroup;
+import edu.iis.powp.command.gui.events.ImportFromCommandManagerButtonListener;
 import edu.iis.powp.command.gui.events.SearchTextFieldChangeListener;
 import edu.iis.powp.command.gui.events.TreeNodeSelectionListener;
 import edu.iis.powp.window.WindowComponent;
@@ -59,8 +60,9 @@ public class CommandDatabaseWindow extends JFrame implements WindowComponent {
 		
 		JPanel bottomPanel = new JPanel();
 		//BoxLayout bottomLayout = new BoxLayout(bottomPanel, BoxLayout.LINE_AXIS);
-		Button clearButton = new Button("Clear");
-		bottomPanel.add(clearButton);
+		Button importFromCommandManagerButton = new Button("Import from CommandManager");
+		importFromCommandManagerButton.addActionListener(new ImportFromCommandManagerButtonListener(database));
+		bottomPanel.add(importFromCommandManagerButton);
 		Button exportButton = new Button("Export");
 		bottomPanel.add(exportButton);
 		Button importButton = new Button("Import");
