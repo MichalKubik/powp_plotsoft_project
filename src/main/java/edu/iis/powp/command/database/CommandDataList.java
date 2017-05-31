@@ -3,13 +3,21 @@ package edu.iis.powp.command.database;
 import java.util.*;
 import edu.iis.powp.command.IPlotterCommand;
 
-public class CommandDataList extends ArrayList<CommandData> {
+public class CommandDataList {
 
-	private static final long serialVersionUID = 1L;
+	private ArrayList<CommandData> list;
+
+	public CommandDataList(){
+		list = new ArrayList<>();
+	}
+	
+	public boolean add(CommandData e) {
+		return list.add(e);
+	}
 
 	public List<IPlotterCommand> getCommandList(){
 		ArrayList<IPlotterCommand> commandList = new ArrayList<>();
-		this.forEach(data -> commandList.add(data.getCommand()));
+		list.forEach(data -> commandList.add(data.getCommand()));
 		return commandList;
 	}
 }
