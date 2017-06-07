@@ -1,1 +1,1 @@
-{"list":[{"type":"SetPositionCommand","x":-50,"y":-50},{"type":"DrawToCommand","x":50,"y":-50},{"type":"DrawToCommand","x":50,"y":50},{"type":"DrawToCommand","x":-50,"y":50},{"type":"DrawToCommand","x":-50,"y":-50}]}
+{"commandDataList":[{"type":"SetPositionCommand","x":-50,"y":-50},{"type":"DrawToCommand","x":50,"y":-50},{"type":"DrawToCommand","x":50,"y":50},{"type":"DrawToCommand","x":-50,"y":50},{"type":"DrawToCommand","x":-50,"y":-50}]}

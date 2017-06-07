@@ -62,9 +62,10 @@ public class CommandDatabaseWindow extends JFrame implements WindowComponent {
 		importFromCommandManagerButton.addActionListener(new ImportFromCommandManagerButtonListener(database));
 		bottomPanel.add(importFromCommandManagerButton);
 		Button exportButton = new Button("Export");
-		exportButton.addActionListener(new ExportListener(database));
+		exportButton.addActionListener(new ExportButtonListener(database));
 		bottomPanel.add(exportButton);
 		Button importButton = new Button("Import");
+		importButton.addActionListener(new ImportButtonListener(database));
 		bottomPanel.add(importButton);
 		content.add(bottomPanel);
 		

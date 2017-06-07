@@ -1,1 +1,1 @@
-{"list":[{"type":"SetPositionCommand","x":0,"y":0},{"type":"DrawToCommand","x":-150,"y":20},{"type":"DrawToCommand","x":-75,"y":200},{"type":"DrawToCommand","x":0,"y":0}]}
+{"commandDataList":[{"type":"SetPositionCommand","x":0,"y":0},{"type":"DrawToCommand","x":-150,"y":20},{"type":"DrawToCommand","x":-75,"y":200},{"type":"DrawToCommand","x":0,"y":0}]}

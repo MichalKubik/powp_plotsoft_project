@@ -93,8 +93,7 @@ public class Command extends CommandDatabaseComponent implements ICompoundComman
 	@Override
 	public void saveToFile() throws IOException {
 		FileWriter writer = new FileWriter("data/" + name + ".json");
-		CommandDataList cdl = new CommandDataList();
-		plotterCommands.forEach(cmd -> cdl.add(new CommandData(cmd)));
+		CommandDataList cdl = getCommandData();
 		writer.append(new Gson().toJson(cdl));
 		writer.close();
 	}
@@ -106,5 +105,22 @@ public class Command extends CommandDatabaseComponent implements ICompoundComman
 		name = name.substring(0, name.length() - 5);
 		CommandDataList cdl = new Gson().fromJson(reader, CommandDataList.class);
 		return new Command(name, cdl.getCommandList());
+	}
+	
+	private CommandDataList getCommandData(){
+		CommandDataList cdl = new CommandDataList();
+		plotterCommands.forEach(cmd -> {
+			if (cmd instanceof ICompoundCommand){
+				Iterator<IPlotterCommand> it = ((ICompoundCommand) cmd).iterator();
+				while(it.hasNext()){
+					cdl.add(new CommandData(it.next()));
+				}
+			}
+			else {
+				cdl.add(new CommandData(cmd));
+			}
+			
+		});
+		return cdl;
 	}
 }

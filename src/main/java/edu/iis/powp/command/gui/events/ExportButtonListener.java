@@ -6,11 +6,11 @@ import java.io.IOException;
 
 import edu.iis.powp.command.database.CommandDatabase;
 
-public class ExportListener implements ActionListener {
+public class ExportButtonListener implements ActionListener {
 
 	private CommandDatabase db;
 	
-	public ExportListener(CommandDatabase db){
+	public ExportButtonListener(CommandDatabase db){
 		this.db = db;
 	}
 	

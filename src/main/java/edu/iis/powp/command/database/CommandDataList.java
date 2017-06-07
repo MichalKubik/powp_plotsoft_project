@@ -5,19 +5,19 @@ import edu.iis.powp.command.IPlotterCommand;
 
 public class CommandDataList {
 
-	private ArrayList<CommandData> list;
+	private ArrayList<CommandData> commandDataList;
 
 	public CommandDataList(){
-		list = new ArrayList<>();
+		commandDataList = new ArrayList<>();
 	}
 	
 	public boolean add(CommandData e) {
-		return list.add(e);
+		return commandDataList.add(e);
 	}
 
 	public List<IPlotterCommand> getCommandList(){
 		ArrayList<IPlotterCommand> commandList = new ArrayList<>();
-		list.forEach(data -> commandList.add(data.getCommand()));
+		commandDataList.forEach(data -> commandList.add(data.getCommand()));
 		return commandList;
 	}
 }
