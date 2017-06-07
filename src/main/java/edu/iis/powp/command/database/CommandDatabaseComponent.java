@@ -1,5 +1,7 @@
 package edu.iis.powp.command.database;
 
+import java.io.IOException;
+
 /**
  *	Abstract class for database components.
  */
@@ -24,5 +26,7 @@ public abstract class CommandDatabaseComponent
 	{
 		this.name = name;
 	}
+	
+	public abstract void saveToFile() throws IOException;
 
 }

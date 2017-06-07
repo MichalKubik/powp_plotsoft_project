@@ -90,11 +90,13 @@ public class Command extends CommandDatabaseComponent implements ICompoundComman
 		return plotterCommands;
 	}
 	
+	@Override
 	public void saveToFile() throws IOException {
 		FileWriter writer = new FileWriter("data/" + name + ".json");
 		CommandDataList cdl = new CommandDataList();
 		plotterCommands.forEach(cmd -> cdl.add(new CommandData(cmd)));
-		new Gson().toJson(writer, CommandDataList.class);
+		writer.append(new Gson().toJson(cdl));
+		writer.close();
 	}
 	
 	public static Command readFromFile(String path) throws IOException {

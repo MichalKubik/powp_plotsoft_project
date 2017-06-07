@@ -1,0 +1,1 @@
+{"list":[{"type":"SetPositionCommand","x":-75,"y":-100},{"type":"DrawToCommand","x":75,"y":-100},{"type":"DrawToCommand","x":75,"y":100},{"type":"DrawToCommand","x":-75,"y":100},{"type":"DrawToCommand","x":-75,"y":-100}]}

@@ -1,6 +1,6 @@
 package edu.iis.powp.command.database;
 
-import java.awt.Component;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,4 +95,14 @@ public class CommandGroup extends CommandDatabaseComponent
 		return returnList;
 	}
 	
+	@Override
+	public void saveToFile() throws IOException {
+		components.forEach(c -> {
+			try {
+				c.saveToFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
+	}
 }
