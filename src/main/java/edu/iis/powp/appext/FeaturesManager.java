@@ -2,7 +2,6 @@ package edu.iis.powp.appext;
 
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.DriverManager;
-import edu.iis.powp.command.database.Command;
 import edu.iis.powp.command.database.CommandDatabase;
 import edu.iis.powp.command.manager.LoggerCommandChangeObserver;
 import edu.iis.powp.command.manager.PlotterCommandManager;
