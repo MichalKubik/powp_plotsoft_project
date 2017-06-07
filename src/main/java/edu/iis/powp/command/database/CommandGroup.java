@@ -1,6 +1,5 @@
 package edu.iis.powp.command.database;
 
-import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 
