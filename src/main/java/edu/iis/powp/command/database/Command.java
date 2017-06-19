@@ -16,6 +16,7 @@ import edu.iis.powp.command.IPlotterCommand;
  */
 public class Command extends CommandDatabaseComponent implements ICompoundCommand {
 
+	private static final String FILE_EXTENSION = ".json";
 	private List<IPlotterCommand> plotterCommands;
 	
 	/**
@@ -92,7 +93,7 @@ public class Command extends CommandDatabaseComponent implements ICompoundComman
 	
 	@Override
 	public void saveToFile() throws IOException {
-		FileWriter writer = new FileWriter("data/" + name + ".json");
+		FileWriter writer = new FileWriter("data/" + name + FILE_EXTENSION);
 		CommandDataList cdl = getCommandData();
 		writer.append(new Gson().toJson(cdl));
 		writer.close();
@@ -102,7 +103,7 @@ public class Command extends CommandDatabaseComponent implements ICompoundComman
 		File file = new File(path);
 		FileReader reader = new FileReader(file);
 		String name = file.getName();
-		name = name.substring(0, name.length() - 5);
+		name = name.substring(0, name.length() - FILE_EXTENSION.length());
 		CommandDataList cdl = new Gson().fromJson(reader, CommandDataList.class);
 		return new Command(name, cdl.getCommandList());
 	}
